@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* Available moves */
+        const moves = ["rock", "paper", "scissors"];
+        
+        /*Player Score */
+        playerScore = 0;
+        /*Computer Score */
+        compScore = 0;
+        /* returns Rock, Paper, or Scissor randomly */
+        function computerPlay() {
+            return moves.at(Math.floor(Math.random() * 3));
+        }
+
+        function playRound(playerSelection = prompt("Rock, Paper, or Scissors?").toLowerCase(), computerSelection = computerPlay()) {
+            console.log(`Player Choice: ${playerSelection}`);
+            console.log(`Computer Choice: ${computerSelection}`);
+
+            /*Player Chose Rock */
+            if(playerSelection == "rock"){
+                if(computerSelection == "scissors"){
+                    ++playerScore;
+                    return 'You Win! Rock beats Scissors!';
+                }
+                else if(computerSelection == "paper"){
+                    ++compScore;
+                    return 'You Lose! Paper beats Rock!';
+                }
+            }
+            /*Player Chose Paper */
+            else if(playerSelection == "paper"){
+                if(computerSelection == "rock"){
+                    ++playerScore;
+                    return 'You Win! Paper beats Rock!';
+                }
+                else if(computerSelection == "scissors"){
+                    ++compScore;
+                    return 'You Lose! Scissors beats Paper!';
+                }
+            }
+            /*Player Chose Scissors*/
+            else if(playerSelection == "scissors"){
+                if(computerSelection == "paper"){
+                    ++playerScore;
+                    return 'You Win! Scissors beats Paper!';
+                }
+                else if(computerSelection == "rock"){
+                    ++compScore;
+                    return 'You Lose! Rock beats Scissors!';
+                }
+            }
+            return 'It\'s a Draw! No one wins!';
+        }
+        
+        /* Win condition */
+        let gg = () => {
+            if(playerScore > compScore){
+                return 'You beat the Computer!';
+            }
+            else return 'The Computer beat You!';
+        }
+
+        /* Best of 8 Rounds */
+        let game = () => {
+            console.log(playRound());
+            console.log(`Player Score: ${playerScore} ; Computer Score: ${compScore}`);
+            if(playerScore < 5 && compScore < 5){
+                game();
+            }
+            else console.log(gg());
+        }
+
+        
+    </script>
+</body>
+</html>
