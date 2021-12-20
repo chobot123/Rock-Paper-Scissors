@@ -4,81 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ROCK PAPER SCISSORS</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <script>
-        /* Available moves */
-        const moves = ["rock", "paper", "scissors"];
-        
-        /*Player Score */
-        playerScore = 0;
-        /*Computer Score */
-        compScore = 0;
-        /* returns Rock, Paper, or Scissor randomly */
-        function computerPlay() {
-            return moves.at(Math.floor(Math.random() * 3));
-        }
-
-        function playRound(playerSelection = prompt("Rock, Paper, or Scissors?").toLowerCase(), computerSelection = computerPlay()) {
-            console.log(`Player Choice: ${playerSelection}`);
-            console.log(`Computer Choice: ${computerSelection}`);
-
-            /*Player Chose Rock */
-            if(playerSelection == "rock"){
-                if(computerSelection == "scissors"){
-                    ++playerScore;
-                    return 'You Win! Rock beats Scissors!';
-                }
-                else if(computerSelection == "paper"){
-                    ++compScore;
-                    return 'You Lose! Paper beats Rock!';
-                }
-            }
-            /*Player Chose Paper */
-            else if(playerSelection == "paper"){
-                if(computerSelection == "rock"){
-                    ++playerScore;
-                    return 'You Win! Paper beats Rock!';
-                }
-                else if(computerSelection == "scissors"){
-                    ++compScore;
-                    return 'You Lose! Scissors beats Paper!';
-                }
-            }
-            /*Player Chose Scissors*/
-            else if(playerSelection == "scissors"){
-                if(computerSelection == "paper"){
-                    ++playerScore;
-                    return 'You Win! Scissors beats Paper!';
-                }
-                else if(computerSelection == "rock"){
-                    ++compScore;
-                    return 'You Lose! Rock beats Scissors!';
-                }
-            }
-            return 'It\'s a Draw! No one wins!';
-        }
-        
-        /* Win condition */
-        let gg = () => {
-            if(playerScore > compScore){
-                return 'You beat the Computer!';
-            }
-            else return 'The Computer beat You!';
-        }
-
-        /* Best of 8 Rounds */
-        let game = () => {
-            console.log(playRound());
-            console.log(`Player Score: ${playerScore} ; Computer Score: ${compScore}`);
-            if(playerScore < 5 && compScore < 5){
-                game();
-            }
-            else console.log(gg());
-        }
-
-        
-    </script>
+    <div class="header">
+        <div id="title">ROCK PAPER SCISSORS</div>
+        <div id="desc" style ="font-size: 28px;">Man vs Machine</div>
+        <div id="best-of" style = "font-size: 24px">First to 5</div>
+    </div>
+    <div class="body">
+        <div class="player">
+            <div class="player-choice">Choose your weapon:</div>
+            <div class="p-image"><img id ="image"></div>
+        </div>
+        <div class="comp">
+            <div class="comp-choice">Your enemy chooses:</div>
+            <div class="c-image"><img id ="image"></div>
+        </div>
+    </div>
+    <div class="result"></div>
+    <div class="buttons">
+        <button id="rock"><img class = "r" src="https://images.pexels.com/photos/161702/harmony-relax-rock-moqui-161702.jpeg?cs=srgb&dl=pexels-pixabay-161702.jpg&fm=jpg" alt= "rock image"></button>
+        <button id="paper"><img class= "p" src="https://images.pexels.com/photos/8533218/pexels-photo-8533218.jpeg?cs=srgb&dl=pexels-anna-nekrashevich-8533218.jpg&fm=jpg" alt= "paper image"></button>
+        <button id="scissors"><img class = "s" src="https://images.pexels.com/photos/1319460/pexels-photo-1319460.jpeg?cs=srgb&dl=pexels-nick-demou-1319460.jpg&fm=jpg" alt = "scissors image"></button>
+    </div>
+    <div class="score">
+        <div class="container">
+            <h3 id = "playerScore">Player Score: 0</h3>
+            <h3 id = "compScore">Computer Score: 0</h3>
+        </div>
+    </div>
 </body>
 </html>
